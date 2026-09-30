@@ -5,7 +5,7 @@
 #   scripts/release.sh --publish       # also create release vX.Y.Z on github.com/ziozzang/jamak-trans
 #
 # Publishing uses `gh` when installed, otherwise the GitHub API with $GITHUB_TOKEN.
-# Release notes: dist/NOTES.md if present.
+# Release notes: RELEASE_NOTES.md (or $NOTES_FILE) if present.
 set -euo pipefail
 cd "${0:A:h}/.."
 
@@ -14,6 +14,9 @@ VERSION=${VERSION:-$(<VERSION)}
 TAG=v$VERSION
 ASSET=JamakTrans_${VERSION}_macos_universal.zip
 
+NOTES_FILE=${NOTES_FILE:-RELEASE_NOTES.md}
+NOTES=$( [[ -f $NOTES_FILE ]] && cat "$NOTES_FILE" || echo "Jamak Trans $TAG" )
+
 VERSION=$VERSION ./build.sh
 rm -rf dist && mkdir dist
 ditto -c -k --keepParent build/JamakTrans.app "dist/$ASSET"
@@ -21,7 +24,6 @@ ditto -c -k --keepParent build/JamakTrans.app "dist/$ASSET"
 
 [[ ${1:-} == --publish ]] || { echo "✓ dist/ ready (not published)"; exit 0; }
 
-NOTES=$( [[ -f dist/NOTES.md ]] && cat dist/NOTES.md || echo "Jamak Trans $TAG" )
 git tag -a "$TAG" -m "Jamak Trans $TAG" 2>/dev/null || true
 git push origin "$TAG"
 

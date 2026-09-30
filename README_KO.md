@@ -86,7 +86,7 @@ GitHub Actions 없이 직접 빌드하고 배포합니다.
 ```sh
 echo 1.0.1 > VERSION            # 버전은 VERSION 파일 한 곳에서만 관리
 scripts/release.sh              # dist/JamakTrans_1.0.1_macos_universal.zip + dist/SHA256SUMS 생성·검증
-scripts/release.sh --publish    # 태그 v1.0.1을 푸시하고 GitHub 릴리스 생성 (gh 또는 $GITHUB_TOKEN 필요, 노트는 dist/NOTES.md)
+scripts/release.sh --publish    # 태그 v1.0.1을 푸시하고 GitHub 릴리스 생성 (gh 또는 $GITHUB_TOKEN 필요, 노트는 RELEASE_NOTES.md)
 ```
 
 ## 라이선스

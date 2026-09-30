@@ -65,7 +65,7 @@ GitHub Actions are not used; releases are built and published by hand.
 ```sh
 echo 1.0.1 > VERSION            # single source of the version
 scripts/release.sh              # dist/JamakTrans_1.0.1_macos_universal.zip + dist/SHA256SUMS (verified)
-scripts/release.sh --publish    # push tag v1.0.1 and create the GitHub release (gh or $GITHUB_TOKEN; notes from dist/NOTES.md)
+scripts/release.sh --publish    # push tag v1.0.1 and create the GitHub release (gh or $GITHUB_TOKEN; notes from RELEASE_NOTES.md)
 ```
 
 ## License
