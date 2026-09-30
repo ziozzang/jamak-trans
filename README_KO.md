@@ -6,8 +6,15 @@ macOS에 내장된 온디바이스 번역(Translation 프레임워크)으로 SRT
 
 ## 설치
 
-[Releases](https://github.com/ziozzang/jamak-trans/releases)에서 `JamakTrans_<버전>_macos_universal.zip`을 받아 압축을 풀고 `JamakTrans.app`을 `/Applications`로 옮기세요.
-ad-hoc 서명만 되어 있어서(공증 없음), 브라우저로 받은 경우 처음 한 번은 다음 명령을 실행해야 열립니다.
+터미널에 한 줄:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ziozzang/jamak-trans/main/install.sh | sh
+```
+
+- 최신 릴리스를 받아 `SHA256SUMS`로 검증한 뒤 `/Applications/JamakTrans.app`에 설치합니다.
+- 앱은 공증 없이 ad-hoc 서명만 되어 있습니다. `curl`로 받은 파일에는 격리 표시가 붙지 않아 Gatekeeper 경고 없이 열립니다. 이후 업데이트는 앱의 자동 업데이트가 합니다.
+- [Releases](https://github.com/ziozzang/jamak-trans/releases)에서 브라우저로 zip을 받으면 "손상되었거나 확인되지 않은 개발자"라며 막힙니다. 그때는 다음 명령을 한 번 실행하세요.
 
 ```sh
 xattr -dr com.apple.quarantine /Applications/JamakTrans.app

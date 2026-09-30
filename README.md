@@ -6,8 +6,15 @@ Jamak Trans (자막 번역, "subtitle translation") is a native macOS app that t
 
 ## Install
 
-Download `JamakTrans_<version>_macos_universal.zip` from [Releases](https://github.com/ziozzang/jamak-trans/releases), unzip it and move `JamakTrans.app` to `/Applications`.
-The app is ad-hoc signed and not notarized. If you downloaded it with a browser, run this once before opening it:
+Run this one line in Terminal:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ziozzang/jamak-trans/main/install.sh | sh
+```
+
+- It downloads the latest release, verifies it against `SHA256SUMS` and installs `/Applications/JamakTrans.app`.
+- The app is ad-hoc signed and not notarized. Files fetched with `curl` get no quarantine flag, so it opens without a Gatekeeper prompt. Later updates come through the app's self-updater.
+- If you downloaded the zip from [Releases](https://github.com/ziozzang/jamak-trans/releases) with a browser instead, macOS will say it "is damaged" or is from an unidentified developer. Run this once to fix it:
 
 ```sh
 xattr -dr com.apple.quarantine /Applications/JamakTrans.app
